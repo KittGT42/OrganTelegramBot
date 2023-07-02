@@ -1,0 +1,1 @@
+worker: python TelegramBotOrgan_by_aoigram.py
