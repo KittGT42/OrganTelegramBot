@@ -23,13 +23,10 @@ class ProfileInvitation(StatesGroup):
 
 def make_ticket(fio, numb_row, numb_place, date):
     global IMAGE_OUT, TEMPLATE, DRAW
-    TEMPLATE = Image.open("/Users/pro/PycharmProjects/venv_Telegram_Bot_Organ_by_aiogram/"
-                          "Template/2023-07-01 16.13.38.jpg")
+    TEMPLATE = Image.open("Template/2023-07-01 16.13.38.jpg")
     IMAGE_OUT = TEMPLATE.resize((1280, 720))
-    font = ImageFont.truetype("/Users/pro/PycharmProjects/venv_Telegram_Bot_Organ_by_aiogram/fonts/"
-                              "ofont.ru_Times New Roman.ttf", size=40)
-    font_for_number = ImageFont.truetype("/Users/pro/PycharmProjects/venv_Telegram_Bot_Organ_by_aiogram/fonts/"
-                                         "times new roman.ttf", size=46)
+    font = ImageFont.truetype("fonts/ofont.ru_Times New Roman.ttf", size=40)
+    font_for_number = ImageFont.truetype("fonts/times new roman.ttf", size=46)
     DRAW = ImageDraw.Draw(IMAGE_OUT)
     DRAW.text((700, 317), fio, font=font_for_number, fill=color)
     DRAW.text((767, 405), numb_row, font=font, fill=color)
@@ -94,9 +91,9 @@ async def load_date_of_concert(message: types.Message, state: FSMContext):
 
 @dp.message_handler(commands=['result'])
 async def cmd_result(message: types.Message):
-    photo = open('/Users/pro/PycharmProjects/venv_Telegram_Bot_Organ_by_aiogram/Probe.png', 'rb')
+    photo = open('Probe.png', 'rb')
     await bot.send_photo(message.chat.id, photo)
-    os.remove('/Users/pro/PycharmProjects/venv_Telegram_Bot_Organ_by_aiogram/Probe.png')
+    os.remove('Probe.png')
     await message.answer('Для створення нового бронювання жми /create')
 
 
